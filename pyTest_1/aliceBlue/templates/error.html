@@ -1,0 +1,29 @@
+{% block html_attribs %} lang="en"{% endblock %}
+{% block title %} Error {% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<br/><br/><br/>
+	<h3>Unexpected error, Occurred!</h3><br/>
+	 <div class="container">
+ 	 	{% with errors = get_flashed_messages(category_filter=["error"]) %}
+		{% if errors %}
+		<ul class="list-unstyled">
+		    {%- for msg in errors %}
+		    <li>
+		    		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		    		<strong> {{ msg }} </strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    		<span aria-hidden="true">&times;</span>
+			 	</button>
+				</div>
+			</li>
+		    {% endfor -%}
+		</ul>
+		{% endif %}
+		{% endwith %}
+	</div>
+{% endblock %}

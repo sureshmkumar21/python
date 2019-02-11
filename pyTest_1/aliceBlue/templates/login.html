@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+
+{% block html_attribs %} lang="en"{% endblock %}
+{% block title %} Login {% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<br/><br/><br/>
+	 <div class="container">
+ 	 	{% with errors = get_flashed_messages(category_filter=["error"]) %}
+		{% if errors %}
+		<ul class="list-unstyled">
+		    {%- for msg in errors %}
+		    <li>
+		    		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		    		<strong> {{ msg }} </strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    		<span aria-hidden="true">&times;</span>
+			 	</button>
+				</div>
+			</li>
+		    {% endfor -%}
+		</ul>
+		{% endif %}
+		{% endwith %}
+		
+		<form action="" method="post">
+			{{ form.csrf_token }}
+                <p><input type=text name=username>
+                <p><input type=password name=password>
+                <p><input type=submit value=Login>
+         </form>
+	</div>
+{% endblock %}

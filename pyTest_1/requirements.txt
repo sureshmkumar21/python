@@ -1,0 +1,4 @@
+virtualenv
+flask-bootstrap
+flask-login
+Flask-WTF
